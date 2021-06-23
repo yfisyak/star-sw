@@ -1,19 +1,24 @@
 # Changelog
 
-## [Unreleased]
+## [SL21c] - 2021-06-XX
 
 First release after code transfer to Git
 
 ### Enhancements
 
-- Introduce .github/CODEOWNERS
+- Employ initial CI build based on a Docker container with Spack environment
+  (#37)
+- Introduce run time switch for dN/dx calculations in StRoot/StdEdxY2Maker (#36)
 - Improve pp and pA handling in StRoot/StBTofCalibMaker
 - Update centrality bins in StRoot/StRefMultCorr
+- Enhance cons scripts to allow more control over external dependencies location
+  (#8)
+- Introduce .github/CODEOWNERS
 
 ### Bug fixes
 
 - Fix pre Run 13 BTOF geometry by properly accounting valid trays and GEM-trays
-- Fix memory leak introduced in SL21b (Issue #21, pending)
+- Fix memory leak introduced in SL21b (Issue #21)
 
 ### Miscellaneous
 
@@ -40,7 +45,14 @@ First release after code transfer to Git
 - Event-by-event T0 corrections for TPC
 - Add new BFC option for selecting a vertex in pico events: PicoVtxVpdOrDefault
 - Save MC track and MC vertex information in PicoDst
-- Define y2021a geometry
+- Provide initial revision for new y2021a geometry
 
 
 ## [SL21a] - 2021-02-08
+
+### Enhancements
+
+- Update older geometries: y2018c, y2019b, and y2020b
+- Updates to FST geometry (StarVMC/Geometry/FstmGeo/FstmGeo.xml)
+- New code to support FCS commissioning
+  - StEvent data structures, database, and online DAQ support for the new system
