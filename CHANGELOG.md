@@ -1,6 +1,6 @@
 # Changelog
 
-## [SL21c] - 2021-06-XX
+## [SL21c] - 2021-07-XX
 
 First release after code transfer to Git
 
@@ -19,6 +19,15 @@ First release after code transfer to Git
 
 - Fix pre Run 13 BTOF geometry by properly accounting valid trays and GEM-trays
 - Fix memory leak introduced in SL21b (Issue #21)
+
+### API changes
+
+- Remove outdated `StAutoBrowse` and related public methods (#6):
+
+      void StObject::Browse(TBrowser *tb)
+      Bool_t StObject::IsFolder() const
+      void StEmcDetector::Browse(TBrowser *b)
+      void StEvent::Browse(TBrowser* b)
 
 ### Miscellaneous
 
