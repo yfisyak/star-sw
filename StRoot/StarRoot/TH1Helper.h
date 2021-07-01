@@ -27,7 +27,22 @@ int    GetNonZeros() const;
 double GetIntegral() ; 
 double GetIntegErr() ;
 
-static void SetCanRebin(TH1 *h,int axis=0);
+///@{
+/**
+ * A set of overloads to address the change in the API of ROOT's TH1
+ * See https://github.com/root-project/root/blob/87a998d48803bc207288d90038e60ff148827664/hist/hist/inc/TH1.h#L166
+ * and https://github.com/root-project/root/blob/87a998d48803bc207288d90038e60ff148827664/hist/doc/v600/index.md#taxis
+ *
+ * The respective overload is selected when TH1 has either `TH1::SetBit()` or `TH1::SetCanExtend()` method.
+ */
+template<typename T>
+static auto SetCanRebin(T* h, int axis=0) -> decltype(h->SetBit(), void()) { h->SetBit(TH1::kCanRebin); }
+
+template<typename T>
+static auto SetCanRebin(T* h, int axis=0) -> decltype(h->SetCanExtend(), void()) { h->SetCanExtend(axis ? axis : TH1::kAllAxes); }
+
+static void SetCanRebin(...) { }
+///@}
 
 private:
 void   Build();
